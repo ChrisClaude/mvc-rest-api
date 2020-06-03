@@ -48,7 +48,24 @@ namespace MVC_REST_API.Controllers
             return NotFound();
         }
 
-        // POST api/commands
+        /// <summary>
+        /// Creates a CommandItem
+        /// </summary>
+        ///<remarks>
+        /// Sample request:
+        ///
+        ///     POST /Command
+        ///     {
+        ///        "howTo": "run a react app",
+        ///        "line": "npm start",
+        ///        "platform": "React JS"
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="commandCreateDto"></param>
+        /// <returns>A newly created CommandItem</returns>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response> 
         [HttpPost]
         public ActionResult<CommandReadDto> CreateCommand(CommandCreateDto commandCreateDto)
         {
@@ -112,7 +129,13 @@ namespace MVC_REST_API.Controllers
             return NoContent();
         }
 
-        // DELETE api/commands/{id}
+        /// <summary>
+        /// Deletes a specific CommandItem
+        /// </summary>
+        /// <param name="id">primary key value of the CommandItem to be deleted</param>
+        /// <returns>CommandItem deleted</returns>
+        /// <response code="200">Returns the newly created item</response>
+        /// <response code="404">If the Item is null</response>
         [HttpDelete("{id}")]
         public ActionResult<CommandReadDto> DeleteCommand(int id) 
         {
